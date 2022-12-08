@@ -1,0 +1,57 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+
+    // I found out what the problem was
+    // My reading from the file was bad
+    // You have to take care about the waste chars, that can harm the proper running of our code
+
+    int n;
+    char type_of_var;
+
+    printf("How many elements do you want? ");
+    scanf("%d", &n);
+
+    char waste;
+
+    scanf("%c", &waste);
+
+    printf("What type of variable do you want?");
+    scanf("%c", &type_of_var);
+
+    scanf("%c", &waste);
+
+    if(type_of_var=='i'){
+
+        int * ptr_to_array = calloc (n, sizeof(int));
+        int var;
+        
+        for(int i=0; i<n; i++){
+            scanf("%d", &var);
+            ptr_to_array[i]= var;
+        }
+
+        for(int i=0; i<n; i++){
+            printf("%d ", ptr_to_array[i]);
+        }
+
+        free(ptr_to_array);
+    }else{
+        char * ptr_to_array = calloc (n, sizeof(char));
+        char var;
+        for(int i=0; i<n; i++){
+            scanf("%c", &var);
+            ptr_to_array[i] = var;
+        }
+
+        for(int i=0; i<n; i++){
+            printf("%c ", ptr_to_array[i]);
+        }
+
+        free(ptr_to_array);
+
+    }
+
+    return 0;
+}
